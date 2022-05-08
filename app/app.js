@@ -20,10 +20,10 @@ function ContactController($scope) {
         }
       }
     }
+    $scope.newContact = null;
   }
-  $scope.newContact = null;
 
-  $scope.edit = function () {
+  $scope.edit = function (id) {
     for (var i in $scope.contacts) {
       if ($scope.contacts[i].id == id) {
         $scope.newContact = angular.copy($scope.contacts[i]);
