@@ -2,7 +2,7 @@
   "name": "contactsApp",
   "private": true,
   "version": "0.0.0",
-  "description": "A starter project for AngularJS",
+  "description": "Contact list with crud functions",
   "repository": "https://github.com/angular/angular-seed",
   "license": "MIT",
   "dependencies": {
@@ -20,7 +20,8 @@
     "karma-chrome-launcher": "^2.2.0",
     "karma-firefox-launcher": "^1.1.0",
     "karma-jasmine": "^1.1.2",
-    "protractor": "^5.4.1"
+    "protractor": "^5.4.1",
+    "firebase": "*"
   },
   "scripts": {
     "postinstall": "npm run copy-libs",
