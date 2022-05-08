@@ -1,14 +1,43 @@
 'use strict';
 
 // Declare app level module which depends on views, and core components
-angular.module('myApp', [
-  'ngRoute',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version'
-]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
+angular.module('myApp', []).controller('ContactController', ['$scope', ContactController]);
 
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+function ContactController($scope) {
+  var uId = 0;
+  $scope.newContact = null;
+  $scope.contacts = [];
+
+  $scope.saveContact = function () {
+    if ($scope.newContact.id == null) {
+      uId = uId + 1;
+      $scope.newContact.id = uId;
+      $scope.contacts.push($scope.newContact);
+    } else {
+      for (var i in $scope.contacts) {
+        if ($scope.contacts[i].id == $scope.newContact.id) {
+          $scope.contacts[i] = $scope.newContact;
+        }
+      }
+    }
+  }
+  $scope.newContact = null;
+
+  $scope.edit = function () {
+    for (var i in $scope.contacts) {
+      if ($scope.contacts[i].id == id) {
+        $scope.newContact = angular.copy($scope.contacts[i]);
+      }
+    }
+  }
+
+  $scope.delete = function (id) {
+    for (var i in $scope.contacts) {
+      if ($scope.contacts[i].id == id) {
+        $scope.contacts.splice(i, 1);
+        $scope.newContact = {};
+      }
+    }
+  }
+}
+
